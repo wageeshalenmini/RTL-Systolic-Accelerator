@@ -1,0 +1,6 @@
+# Ignore simulation and log files
+work/
+transcript
+*.wlf
+*.log
+*.jou

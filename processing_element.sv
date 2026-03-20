@@ -1,6 +1,7 @@
 module processing_element (
     input  logic        clk,
     input  logic        reset_n,
+    input  logic        clear,      // Synchronous clear for the accumulator
     input  logic        en,         // Enable signal to start/stop math
     input  logic [7:0]  data_in,    // From Left neighbor (INT8)
     input  logic [7:0]  weight_in,  // From Top neighbor  (INT8)
@@ -20,6 +21,9 @@ module processing_element (
             data_out    <= 8'h0;
             weight_out  <= 8'h0;
         end 
+        else if (clear) begin
+            accumulator <= 20'h0;
+        end
         else if (en) begin
             // 1. PERFORM THE MATH: Multiply and Add to the bin
             accumulator <= accumulator + (data_in * weight_in);

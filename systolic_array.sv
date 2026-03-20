@@ -2,6 +2,7 @@ module systolic_array #(parameter N = 4) (
     input  logic        clk,
     input  logic        reset_n,
     input  logic        en,
+    input  logic        clear,
     input  logic [7:0]  row_in   [N-1:0],
     input  logic [7:0]  col_in   [N-1:0],
     output logic [19:0] final_out [N-1:0][N-1:0]
@@ -26,6 +27,7 @@ module systolic_array #(parameter N = 4) (
                 processing_element pe (
                     .clk(clk),
                     .reset_n(reset_n),
+                    .clear(clear),
                     .en(en),
                     .data_in(h_wire[i][j]),       // Data from left
                     .weight_in(v_wire[i][j]),     // Weight from top

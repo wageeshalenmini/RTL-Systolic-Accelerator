@@ -1,0 +1,5 @@
+*.vcd
+*.log
+*.out
+work/
+sim/
